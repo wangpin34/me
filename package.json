@@ -1,0 +1,43 @@
+{
+  "name": "cell",
+  "version": "0.0.0",
+  "description": "pluginable markdown editor",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --config webpack.prod.js",
+    "dev": "node build/hot-server.js",
+    "test": "mocha"
+  },
+  "keywords": [
+    "editor",
+    "markdown"
+  ],
+  "author": "wangpin",
+  "license": "MIT",
+  "dependencies": {
+    "github-markdown-css": "^2.10.0",
+    "highlight.js": "^9.12.0",
+    "marked": "^0.4.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0-beta.55",
+    "@babel/plugin-proposal-class-properties": "^7.0.0-beta.56",
+    "@babel/preset-env": "^7.0.0-beta.54",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-loader": "^7.1.5",
+    "css-loader": "^1.0.0",
+    "express": "^4.16.3",
+    "file-loader": "^1.1.11",
+    "html-loader": "^0.5.5",
+    "html-webpack-inline-source-plugin": "0.0.10",
+    "html-webpack-plugin": "^3.2.0",
+    "htmllint-loader": "^2.1.4",
+    "style-loader": "^0.21.0",
+    "svg-inline-loader": "^0.8.0",
+    "url-loader": "^1.0.1",
+    "webpack": "^4.16.2",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-middleware": "^3.1.3",
+    "webpack-hot-middleware": "^2.22.3"
+  }
+}
