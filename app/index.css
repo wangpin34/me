@@ -5,6 +5,12 @@ html, body {
   padding: 0;
   font-family: sans-serif;
   text-align: left;
+  font-size: 8px;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  margin: 0;
+  padding: 0;
 }
 
 #root {
@@ -12,6 +18,16 @@ html, body {
   height: 100%;
   display: flex;
   flex-direction: row;
+  overflow-x: hidden;
+}
+
+header {
+  display: none;
+  height: 4rem;
+  text-align: center;
+  line-height: 4rem;
+  color: #E0F2F1;
+  background-color: #00695C;
 }
 
 #input-box {
@@ -32,24 +48,43 @@ html, body {
 
 .mobile-helper {
   display: none;
+  color: #E0F2F1;
+  background-color: #00695C;
+  height: 3rem;
+}
+
+.mobile-helper i {
+  margin-left: 1rem;
+  cursor: pointer;
+  font-size: 2rem;
 }
 
 @media (max-width: 767px) {
   #root {
-    flex-direction: column;
+    display: block;
+  }
+  header {
+    display: block;
   }
   .mobile-helper {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    padding: 0 5%;
     display: flex;
     flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
   }
 
   #input-box {
     width: 90%;
-    height: 100%;
-    padding: 15px;
+    height: 90%;
+    padding: 5% 5%;
   }
   .markdown-body {
-    display: none;
-    padding: 15px;
+    width: 90%;
+    padding: 5% 5%;
   }
 }
