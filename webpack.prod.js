@@ -13,7 +13,7 @@ module.exports = {
   // and webpack starts bundling
   output: {
     // options related to how webpack emits results
-    path: path.resolve(__dirname, "docs"), // string
+    path: path.resolve(__dirname, "dist"), // string
     // the target directory for all output files
     // must be an absolute path (use the Node.js path module)
     filename: "[name].bundle.js", // string    // the filename template for entry chunks

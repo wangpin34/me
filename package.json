@@ -1,7 +1,7 @@
 {
-  "name": "cell",
+  "name": "me",
   "version": "0.0.0",
-  "description": "pluginable markdown editor",
+  "description": "simple markdown editor",
   "main": "index.js",
   "scripts": {
     "build": "webpack --config webpack.prod.js",
