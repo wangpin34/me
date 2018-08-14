@@ -52,8 +52,12 @@ $(document).ready(() => {
     translate()
     highlightCode()
   })
-
-
 })
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker
+            .register('./serviceworker.bundle.js')
+            .then(function() { console.log('Service Worker Registered'); });
+}
 
 

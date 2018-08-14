@@ -1,6 +1,8 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const webpack = require("webpack");
+const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
+const WebpackPwaManifest = require('webpack-pwa-manifest');
 
 module.exports = {
   mode: "development", // "production" | "development" | "none"  // Chosen mode tells webpack to use its built-in optimizations accordingly.
@@ -8,6 +10,10 @@ module.exports = {
     index: [
       "webpack-hot-middleware/client",
       "./app/index.js"
+    ],
+    serviceworker: [
+      "webpack-hot-middleware/client",
+      "./app/service-worker.js"
     ]
   }, // string | object | array  // defaults to ./src
   // Here the application starts executing
@@ -136,9 +142,30 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: "Cell editor",
+      title: "Markdown Editor",
       filename: "index.html",
       template: "templates/index.html",
+    }),
+     new SWPrecacheWebpackPlugin(
+      {
+        cacheId: 'me-cache',
+        dontCacheBustUrlsMatching: /\.\w{8}\./,
+        filename: 'serviceworker.bundle.js',
+        minify: true,
+        navigateFallback:  '/index.html',
+        staticFileGlobsIgnorePatterns: [/\.map$/, /manifest\.json$/]
+      }
+    ),
+    new WebpackPwaManifest({
+      name: 'Markdown Editor',
+      short_name: 'MD',
+      description: 'Simple markdown editor',
+      background_color: '#ffffff',
+      crossorigin: 'use-credentials', //can be null, use-credentials or anonymous
+      icons: [
+        
+      ],
+      start_url: "/index.html"
     }),
     // OccurenceOrderPlugin is needed for webpack 1.x only
     // new webpack.optimize.OccurenceOrderPlugin(),

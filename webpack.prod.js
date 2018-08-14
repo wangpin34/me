@@ -1,12 +1,15 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const HtmlWebpackInlineSourcePlugin = require("html-webpack-inline-source-plugin");
+const WebpackPwaManifest = require('webpack-pwa-manifest');
 
 module.exports = {
   mode: "production", // "production" | "development" | "none"  // Chosen mode tells webpack to use its built-in optimizations accordingly.
   entry: {
     index: [
       "./app/index.js"
+    ],
+    serviceworker: [
+      "./app/service-worker.js"
     ]
   }, // string | object | array  // defaults to ./src
   // Here the application starts executing
@@ -116,12 +119,21 @@ module.exports = {
   stats: "errors-only", // lets you precisely control what bundle information gets displayed
   plugins: [
     new HtmlWebpackPlugin({
-      title: "Cell editor",
+      title: "Markdown Editor",
       filename: "index.html",
-      template: "templates/index.html",
-      inlineSource: ".(js|css)$", // embed all javascript and css inline,
+      template: "templates/index.html"
     }),
-    new HtmlWebpackInlineSourcePlugin()
+    new WebpackPwaManifest({
+      name: 'Markdown Editor',
+      short_name: 'MD',
+      description: 'Simple markdown editor',
+      background_color: '#ffffff',
+      crossorigin: 'use-credentials', //can be null, use-credentials or anonymous
+      icons: [
+        
+      ],
+      start_url: "/index.html"
+    }),
   ]
   // list of additional plugins
   /* Advanced configuration (click to show) */
