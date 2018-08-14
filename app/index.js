@@ -15,8 +15,10 @@ $(document).ready(() => {
 
   const translate = () => {
     if (!$('#input-box')) return
-    let input = $('#input-box').text()
+    //jquery $(dom).text() omits wraps, spaces etc, so here use 'innerText'
+    let input = document.getElementById('input-box').innerText
     console.info(`input:${input}`)
+    if (!input) return
     let output = marked(input)
     //console.info(`output:${output}`)
     if ($('#output-box')) {
